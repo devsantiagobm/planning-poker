@@ -1,0 +1,18 @@
+@use "../variables" as *;
+
+.letter-avatar {
+    aspect-ratio: 1;
+    width: auto;
+    padding: 10px;
+    background-color: $blue;
+    display: grid;
+    place-items: center;
+    color: $main;
+    border-radius: 50%;
+    font-weight: $font-bold;
+
+    &__big {
+        min-width: 64px;
+        font-size: 1.3rem;
+    }
+}

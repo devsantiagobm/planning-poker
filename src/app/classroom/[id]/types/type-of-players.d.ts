@@ -1,0 +1,1 @@
+export type TypeOfPlayers = "viewer" | "player"

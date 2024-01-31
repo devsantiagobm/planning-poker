@@ -1,0 +1,48 @@
+@use "../variables" as *;
+
+.input-radio {
+    display: flex;
+    gap: 8px;
+    user-select: none;
+    cursor: pointer;
+    max-width: 100%;
+
+    &__label {
+        max-width: 100%;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+
+
+    &__input {
+        $radio-size: 18px;
+        border: solid 1px $light-main;
+        width: $radio-size;
+        height: $radio-size;
+        border-radius: 50%;
+        position: relative;
+        display: grid;
+        background-color: $main;
+        place-items: center;
+        aspect-ratio: 1 / 1;
+
+        &::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-50%);
+            width: calc($radio-size) *0.45;
+            height: calc($radio-size) *0.45;
+            background-color: $light-main;
+            border-radius: 50%;
+            opacity: 0;
+            transition: opacity .2s ease;
+        }
+    }
+
+    & input[type="radio"]:checked~&__input::before {
+        opacity: 1;
+    }
+}

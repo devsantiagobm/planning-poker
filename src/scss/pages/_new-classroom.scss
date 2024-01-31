@@ -1,0 +1,58 @@
+@use "../variables" as *;
+
+.new-match {
+    &__main {
+        min-height: 70dvh;
+        display: grid;
+        place-items: center;
+    }
+
+    &__header {
+        padding: 4dvh 3dvw;
+
+        &__box {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+        }
+
+        &__title {
+            font-weight: $font-medium;
+            font-size: 1.3rem;
+        }
+    }
+
+    &__form {
+        min-width: 300px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    &__loader {
+        width: 16px;
+
+    }
+}
+
+
+@mixin new-classroom-572-px {
+    .new-match {
+        overflow-y: hidden;
+        height: 100dvh;
+        padding: 4dvh 7dvw;
+
+        &__header {
+            padding: 0;
+
+            &__title {
+                font-weight: $font-medium;
+                font-size: 1.2rem;
+            }
+        }
+
+        &__form {
+            min-width: 100%;
+        }
+    }
+}

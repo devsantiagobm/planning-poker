@@ -1,0 +1,42 @@
+@use "../variables" as *;
+
+.button {
+    padding: 10px 24px;
+    border: solid 1px inherit;
+    font-weight: $font-medium;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: filter .3s ease;
+    
+    &__primary {
+        color: $main;
+        background-color: $color;
+        width: fit-content;
+        margin-inline: auto;
+    }
+
+
+    &__secondary{
+        background-color: $medium-light-main;
+    }
+
+    &__primary:hover:not(&--disabled),
+    &__secondary:hover:not(&--disabled) {
+        filter: brightness(90%);
+    }
+
+    &__third {
+        border: solid 1px $color;
+        transition: background-color .2s ease, color .2s ease;
+
+        &:hover{
+            background-color: $color;
+            color: $main;
+        }
+    }
+
+    &--disabled{
+        cursor: default;
+        filter: brightness(70%);
+    }
+}

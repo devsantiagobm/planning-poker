@@ -1,0 +1,15 @@
+@use "../variables" as *;
+
+
+.card{
+    border: solid 1px $light-main;
+    width: 48px;
+    border-radius: 8px;
+    aspect-ratio:9 / 14;
+    font-weight: $font-semi-bold;
+    user-select: none;
+
+    &--big{
+        width: 56px;
+    }
+}

@@ -1,0 +1,57 @@
+@use "../variables" as *;
+
+
+.error-advice {
+    user-select: none;
+    position: fixed;
+    bottom: 2%;
+    right: 3%;
+    background-color: $color;
+    max-width: 500px;
+    display: grid;
+    grid-template-columns: 78px 1fr;
+    border-radius: 8px;
+    overflow: hidden;
+
+    &__picture {
+        background-color: $error;
+        display: grid;
+        place-items: center;
+    }
+
+    &__strong {
+        display: block;
+        color: $error;
+        font-size: 1em;
+        font-weight: $font-semi-bold;
+    }
+
+    &__information {
+        padding: 16px;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    &__long-text {
+        font-size: .8em;
+        color: $ultra-dark-color;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        -webkit-line-clamp: 2;
+    }
+}
+
+@mixin error-advice-572-px {
+
+    .error-advice {
+        font-size: 14px;
+        max-width: 100%;
+        bottom: unset;
+        top: 2%;
+        left: 3%;
+        right: 3%;
+    }
+
+}

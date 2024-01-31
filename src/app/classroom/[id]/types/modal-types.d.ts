@@ -1,0 +1,1 @@
+export type ModalTypes = "change-score" | "invite-players" | "update-user" | "confirm-give-admin" | null

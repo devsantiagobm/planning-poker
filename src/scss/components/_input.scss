@@ -1,0 +1,18 @@
+@use "../variables" as *;
+
+.input {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    &__label {
+        font-weight: $font-medium;
+    }
+
+    &__textbox {
+        font-weight: $font-light;
+        border: solid 1px $light-main;
+        padding: 8px 16px;
+        border-radius: 100px;
+    }
+}

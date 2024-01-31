@@ -1,0 +1,7 @@
+// This order is important. If a component gonna change their styles, the styles that must have priority are the ones that come from the pages, not the component itseld
+
+@use "./base";
+
+@use "./components";
+
+@use "./pages";

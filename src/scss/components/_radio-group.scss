@@ -1,0 +1,17 @@
+.radio-group {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    justify-items: center;
+    align-items: center;
+    gap: 8px;
+    row-gap: 24px;
+    width: 100%;
+}
+
+
+@mixin radio-group-992-px{
+    .radio-group {
+        display: flex;
+        flex-direction: column;
+    }
+}

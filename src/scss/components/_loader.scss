@@ -1,0 +1,23 @@
+@use "../variables/" as *;
+
+.loader {
+    width: 48px;
+    height: auto;
+    border-radius: 50%;
+    aspect-ratio: 1;
+    display: inline-block;
+    border-top: 3px solid $dark-main;
+    border-right: 3px solid transparent;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}

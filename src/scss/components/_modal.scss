@@ -1,0 +1,47 @@
+@use "../variables/" as *;
+
+.modal {
+    $main-rgba: rgba($main, 0.3);
+    position: fixed;
+    display: grid;
+    min-height: 100dvh;
+    min-width: 100dvw;
+    place-items: center;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: $main-rgba;
+    backdrop-filter: blur(6px);
+
+
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-weight: $font-semi-bold;
+        background-color: $medium-light-main;
+        padding: 16px 20px;
+    }
+
+
+    &__content {
+        border-radius: 24px;
+        overflow: hidden;
+        width: clamp(350px, 30dvw, 600px);
+    }
+    
+    
+    &__body{
+        padding: 16px 64px;
+        background-color: $dark-main;
+    }
+
+}
+
+@mixin modal-572-px{
+    .modal{
+        &__content{
+            width: clamp(300px, 25dvw, 350px);
+        }
+    }
+} 

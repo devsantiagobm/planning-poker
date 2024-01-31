@@ -1,0 +1,670 @@
+@use "../variables" as *;
+
+.classroom {
+    min-height: 100vh;
+    position: relative;
+    margin: 0 0 12dvh;
+
+
+    &__modal {
+        $main-rgba: rgba($main, 0.3);
+        position: fixed;
+        display: grid;
+        min-height: 100dvh;
+        min-width: 100dvw;
+        place-items: center;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        background-color: $main-rgba;
+        backdrop-filter: blur(6px)
+    }
+
+    &__blured-box {
+        background-color: $main;
+        position: fixed;
+        inset: 0;
+        width: 100%;
+        opacity: .6;
+        filter: blur(16px);
+        backdrop-filter: blur(10px);
+    }
+
+    &__form {
+        padding: 40px 0;
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    &__new-user-box-modal {
+        border: solid 1px $light-main;
+        background-color: $dark-main;
+        box-shadow: 0 0 12px $main inset, 0 0 16px -6px $light-main;
+    }
+
+    &__submit {
+        width: fit-content;
+        margin-top: 4px;
+    }
+
+
+    &__header {
+        width: 100%;
+        padding: 4dvh 3dvw;
+        display: flex;
+        align-items: center;
+
+        &>* {
+            flex: 1;
+        }
+    }
+
+    &__update-user-icon {
+        cursor: pointer;
+    }
+
+    &__title {
+        text-align: center;
+    }
+
+    &__buttons-box {
+        display: flex;
+        gap: 20px;
+        justify-content: flex-end;
+        align-items: center;
+    }
+
+
+    &__poker-table {
+        margin: 10dvh 0 0;
+    }
+
+
+    &__board {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(140px, auto));
+        grid-template-rows: repeat(3, minmax(101px, auto));
+        align-content: center;
+        justify-content: center;
+        grid-template-areas:
+            ". first-line ."
+            "second-line desk third-line"
+            ". fourth-line .";
+        column-gap: 72px;
+        row-gap: 32px;
+
+    }
+
+
+    &__first-line {
+        grid-area: first-line;
+    }
+
+    &__second-line {
+        grid-area: second-line;
+    }
+
+    &__third-line {
+        grid-area: third-line;
+    }
+
+    &__fourth-line {
+        grid-area: fourth-line;
+    }
+
+
+    &__desk {
+        grid-area: desk;
+        border: solid 2px $medium-light-main;
+        border-radius: 1000px;
+        min-height: 350px;
+        min-width: 600px;
+        padding: 4%;
+        // aspect-ratio: 1.7 / 1;
+        box-shadow: 0 0 0px $medium-light-main inset, 0 0 16px -6px $medium-light-main;
+    }
+
+
+    &__desk-middle-line {
+        border: solid 2px $light-main;
+        width: 100%;
+        height: 100%;
+        border-radius: 1000px;
+        padding: 3%;
+        box-shadow: 0 0 0px $light-main inset, 0 0 16px -6px $light-main;
+    }
+
+    &__desk-inner {
+        width: 100%;
+        height: 100%;
+        border-radius: 1000px;
+        border: solid 1px $medium-light-main;
+        background-color: $medium-main;
+        box-shadow: 0 0 0px $light-main inset, 0 0 16px -10px $light-main;
+        display: grid;
+        place-items: center;
+    }
+
+
+    &__list {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 5dvw;
+
+        &:nth-child(1),
+        &:nth-child(4) {
+            padding: 0 17%;
+        }
+    }
+
+    &__letter-avatar,
+    &__player-card {
+        transition: transform .25s ease;
+        
+        &--give-admin:hover {
+            cursor: pointer;
+            transform: translateY(-4px);
+        }
+    }
+
+    &__item {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        align-items: center;
+    }
+
+
+    &__cards {
+        margin: 8dvh 0px 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 40px;
+        user-select: none;
+    }
+
+    &__username {
+        display: flex;
+        justify-content: center;
+        align-items: center; // Center not working
+        gap: 4px;
+        border-radius: 100px;
+        padding: 2px 16px;
+        min-height: 24px;
+
+        &--current {
+            background-color: $ultra-soft-main;
+        }
+
+
+    }
+
+
+    &__username-text{
+        max-width: 12ch;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+
+    &__owner-icon {
+        // background-color: red;
+        max-width: 20px;
+    }
+
+    &__list-of-cards {
+        display: flex;
+        gap: 24px;
+        align-items: center;
+        justify-content: center;
+    }
+
+
+    &__choose-a-card-text {
+        font-size: 1.5rem;
+        font-weight: $font-semi-bold;
+    }
+
+    &__card {
+        transition: transform .2s ease, background-color .2s ease, color .2s ease, box-shadow .2s ease;
+        cursor: pointer;
+        font-weight: $font-semi-bold;
+        display: grid;
+        place-items: center;
+
+
+        &:hover,
+        &--active {
+            background-color: hsl(274, 100%, 75%);
+            color: $main;
+            box-shadow: 0 0 24px -4px $light-main;
+        }
+
+        &--user-voted {
+            background-color: hsl(274, 100%, 75%);
+            color: $main;
+            box-shadow: 0 0 24px -4px $light-main;
+        }
+
+        &--active {
+            transform: translateY(-8px);
+            cursor: default;
+        }
+
+        &--non-clickable {
+            cursor: default;
+        }
+    }
+
+    &__reveal-cards {
+        font-size: 1.2rem;
+        padding-inline: 32px;
+    }
+
+
+    &__result {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-areas: ". cards-result average-result";
+        max-width: 1100px;
+        margin: 8dvh auto 0;
+    }
+
+
+    &__cards-result {
+        grid-area: cards-result;
+        display: flex;
+        gap: 24px;
+        align-items: center;
+        justify-content: center;
+        // background-color:
+    }
+
+    &__average-box {
+        grid-area: average-result;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+    }
+
+    &__card-result-box {
+
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        align-items: center;
+        justify-content: center;
+    }
+
+
+    &__amount-of-votes {
+        font-size: 1.1rem;
+        text-align: center;
+    }
+
+
+
+    &__average-text {
+        font-size: 1.2rem;
+    }
+
+    &__average-number {
+        font-size: 2.5rem;
+        font-weight: $font-semi-bold;
+        margin: 0 0 16px;
+    }
+
+
+    &__invite,
+    &__modes {
+        min-width: 600px;
+        border-radius: 24px;
+        overflow: hidden;
+    }
+
+    &__invite-content {
+        padding: 32px 20px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        gap: 16px;
+        background-color: $dark-main;
+    }
+
+
+    &__close-icon {
+        max-width: 16px;
+        cursor: pointer;
+    }
+
+    &__invite-input {
+        font-size: .95rem;
+    }
+
+    &__change-score {
+        width: clamp(350px, 40dvw, 600px);
+    }
+
+
+    &__change-score-body {
+        padding: 32px;
+    }
+
+
+    &__change-score-form {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    &__change-score-button {
+        position: relative;
+        cursor: pointer;
+
+        &::after {
+            content: "";
+            position: absolute;
+            background-color: $light-main;
+            aspect-ratio: 1;
+            border-radius: 50%;
+            width: calc(100% + 12px);
+            height: calc(100% + 12px);
+            top: 50%;
+            left: 50%;
+            opacity: 0;
+            transform: translateY(-50%) translateX(-50%);
+            transition: opacity .2s ease;
+        }
+
+        &:hover::after {
+            opacity: 1;
+        }
+    }
+
+    &__cards-icon {
+        position: relative;
+        z-index: 1;
+        cursor: pointer;
+        // padding: 8px;
+        border-radius: 50%;
+        aspect-ratio: 1;
+        height: 41px;
+        display: grid;
+        place-content: center;
+        position: relative;
+    }
+
+    &__update-user-form {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+
+    &__radio-group {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        justify-items: center;
+        align-items: center;
+        gap: 8px;
+        row-gap: 24px;
+        width: 100%;
+    }
+
+    &__invite-players {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+
+    &__menu-handler {
+        display: flex;
+        justify-content: flex-end;
+        display: none;
+    }
+
+    &__menu-button {
+        max-width: 32px;
+    }
+
+    &__player-card {
+        transition: background-color .2s ease, color .2s ease, box-shadow .2s ease, transform .2s ease;
+
+
+        &--voted {
+            background-color: hsl(274, 100%, 75%);
+            color: $main;
+            box-shadow: 0 0 24px -4px $light-main;
+        }
+    }
+
+
+    &__confirm-admin-message{
+        text-align: center;
+        margin: 0 0 12px;
+        text-wrap: pretty;
+    }
+
+    &__confirm-admin-button{
+        margin: 0 auto;
+    }
+}
+
+
+@mixin classroom-992-px {
+
+    .classroom {
+        padding: 24px 32px;
+
+        &__menu-handler {
+            display: flex;
+        }
+
+        &__buttons-box {
+            $main-rgba: rgba($medium-light-main, 0.5);
+            position: fixed;
+            right: 0;
+            transform: translateX(100%);
+            top: 0;
+            bottom: 0;
+            width: clamp(250px, 35dvw, 350px);
+            backdrop-filter: blur(16px);
+            padding: 0 24px;
+            background-color: $main-rgba;
+            backdrop-filter: blur(6px);
+            justify-content: center;
+            align-items: flex-start;
+            flex-direction: column;
+            transition: transform .3s ease;
+
+            &--active {
+                transform: translateX(0%);
+            }
+        }
+
+        &__update-user-icon,
+        &__change-score-button {
+            display: flex;
+            max-width: 100%;
+            flex-direction: row-reverse;
+            align-items: center;
+            gap: 8px;
+
+            &::before {
+                max-width: 100%;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                position: relative;
+                z-index: 1;
+            }
+        }
+
+        &__header {
+            padding: 0;
+        }
+
+        &__change-score-button::before {
+            content: "Cambiar puntajes";
+        }
+
+        &__change-score-button::after {
+            display: none;
+        }
+
+        &__update-user-icon::before {
+            content: "Cambiar visualización";
+        }
+
+        &__board {
+            grid-template-columns: 100px minmax(100px, auto) 100px;
+            grid-template-rows: repeat(3, minmax(101px, auto));
+
+            grid-template-areas:
+                "first-line first-line "
+                "second-line desk third-line"
+                "fourth-line fourth-line fourth-line";
+            column-gap: 32px;
+            row-gap: 16px;
+        }
+
+        &__desk {
+            // min-height: 350px;
+            min-width: clamp(200px, 40dvw, 550px);
+            padding: 4%;
+            aspect-ratio: 1.7 /1;
+            min-height: auto;
+            box-shadow: 0 0 0px $medium-light-main inset, 0 0 16px -6px $medium-light-main;
+        }
+
+
+        &__image {
+            width: clamp(48px, 10vw, 56px);
+        }
+
+        &__title {
+            text-align: center;
+            font-size: clamp(1.5rem, 5vw, 2rem);
+        }
+
+
+        &__username {
+            font-size: .8rem;
+        }
+
+        &__card,
+        &__card-result,
+        &__player-card {
+            max-width: 40px;
+        }
+
+        &__card{
+            font-size: .85rem;
+        }
+
+        &__list {
+            gap: 2dvw;
+        }
+
+        &__list-of-cards {
+            display: grid;
+            width: 100%;
+            grid-template-columns: repeat(auto-fit, 40px);
+            justify-content: center;
+            gap: 16px;
+        }
+
+        &__reveal-cards {
+            font-size: .8rem;
+        }
+
+        &__average-text {
+            font-size: 1rem;
+        }
+
+        &__average-number {
+            font-size: 1.5rem;
+        }
+
+        &__invite-content {
+            padding: 32px 16px;
+        }
+
+
+        &__letter-avatar {
+            max-width: 48px;
+            min-width: 0;
+            font-size: .8rem;
+        }
+    }
+}
+
+@mixin classroom-572-px {
+
+    .classroom {
+        padding: 24px 0px;
+
+        &__header {
+            padding: 0 16px;
+
+        }
+
+        &__desk {
+            min-width: clamp(150px, 30dvw, 200px);
+            padding: 4%;
+            aspect-ratio: 1.7 /1;
+            min-height: auto;
+            box-shadow: 0 0 0px $medium-light-main inset, 0 0 16px -6px $medium-light-main;
+        }
+
+        &__board {
+            grid-template-columns: 80px minmax(80px, auto) 80px;
+            grid-template-rows: repeat(3, minmax(101px, auto));
+
+            grid-template-areas:
+                "first-line first-line "
+                "second-line desk third-line"
+                "fourth-line fourth-line fourth-line";
+            column-gap: 16px;
+            row-gap: 16px;
+        }
+
+        &__list-of-cards {
+            gap: 8px;
+        }
+
+        &__username {
+            font-size: .7rem;
+            padding: 2px 8px;
+        }
+
+        &__owner-icon {
+            max-width: 16px;
+        }
+
+        &__card, &__player-card {
+            max-width: clamp(32px, 8vw, 40px);
+            font-size: .7rem;
+        }
+
+
+        &__reveal-cards {
+            font-size: .7rem;
+            padding: 4px 12px;
+        }
+
+        &__desk-middle-line {
+            border: none;
+            padding: 0;
+            box-shadow: 0 0 0px $light-main inset, 0 0 16px -6px $light-main;
+        }
+    }
+}

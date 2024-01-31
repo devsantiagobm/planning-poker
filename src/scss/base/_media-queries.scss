@@ -1,0 +1,15 @@
+@use "../pages" as *;
+@use "../components" as *;
+
+
+@media (max-width: 992px) {
+    @include classroom-992-px();
+    @include radio-group-992-px();
+}
+
+@media (max-width: 572px) {
+    @include new-classroom-572-px();
+    @include error-advice-572-px();
+    @include modal-572-px();
+    @include classroom-572-px();
+}
