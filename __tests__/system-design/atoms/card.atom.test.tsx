@@ -37,6 +37,8 @@ describe("<Card /> tests", function () {
 
     it('Should handle click event correctly', () => {
         const onClickMock = jest.fn();
+
+
         const { getByTestId } = render(<Card onClick={onClickMock}>Click me</Card>);
         fireEvent.click(getByTestId('card'));
         expect(onClickMock).toHaveBeenCalled();

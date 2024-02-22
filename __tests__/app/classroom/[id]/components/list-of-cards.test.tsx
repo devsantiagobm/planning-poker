@@ -1,7 +1,16 @@
 // WITHOUT THIS LINE, THE TESTS ARE SHOWING AN ERROR 
 window.setImmediate = window.setTimeout as any
 
-import { act, renderHook, screen, waitFor } from "@testing-library/react";
+
+jest.mock("socket.io-client", () => ({
+    io: () => ({
+        id: "my-socket-id",
+        emit: jest.fn(),
+        on: jest.fn()
+    })
+}))
+
+import { act, fireEvent, renderHook, screen, waitFor } from "@testing-library/react";
 import { useClassroomContext, useUserContext } from "@/app/classroom/[id]/hooks";
 import { CreateWrapperContexts, RenderHookContexts } from "../../../../test-utils";
 import { typesOfScores } from "@/utils";
@@ -21,6 +30,8 @@ describe("<Cards /> tests", function () {
             wrapper: CreateWrapperContexts(<Cards />)
         })
         result = resultLocal
+
+        // jest.clearAllMocks
     })
 
     it("Should render the cards if globalTypeOfScores is not null and type of player is equal to player", function () {
@@ -97,6 +108,22 @@ describe("<Cards /> tests", function () {
 
         await waitFor(() => {
             expect(screen.getByTestId("list-of-cards")).toHaveStyle({ opacity: 1 })
+        })
+    })
+
+
+    it("Should execute socket.emit if user voted a card", async function () {
+        await act(async () => {
+            fireEvent.click(screen.getByRole("button", { name: "☕" }))
+        })
+
+        expect(result.current.classroom.socket.emit).toHaveBeenCalledWith("vote", { card: "☕" })
+    })
+
+    it("Should execute socket.on in the render of the component", async function () {
+        await waitFor(async () => { 
+            expect(result.current.classroom.socket.on).toHaveBeenCalledWith("reset-classroom", expect.any(Function))
+            expect(result.current.classroom.socket.on).toHaveBeenCalledWith("change-type-of-score", expect.any(Function))
         })
     })
 

@@ -27,8 +27,8 @@ export default function NewMatch() {
     const { createClassroom, loading, error } = useCreateClassroom()
 
 
-    const onSubmit: SubmitHandler<Inputs> = data => {
-        createClassroom(data.name)
+    const onSubmit: SubmitHandler<Inputs> = ({name}) => {
+        createClassroom(name)
     };
 
     return (

@@ -8,6 +8,8 @@ export default function PokerTable() {
     const { firstHalfOfUsers, firstUser, secondHalfOfUsers, secondUser } = useSplitPlayers()
     const { socket, arePlayersReady, averageVotes, isOwner } = useClassroomContext()
 
+
+
     function handleRevealCards() {
         socket.emit("reveal-cards")
     }
@@ -19,6 +21,7 @@ export default function PokerTable() {
     return (
         <div className="classroom__poker-table">
             <div className="classroom__board">
+
                 <ul className="classroom__list classroom__first-line">
                     <AnimatePresence>
                         {firstHalfOfUsers.map(user => { return <UserCard  {...user} key={user._id} /> })}

@@ -2,7 +2,6 @@ import { useCreateClassroom } from "@/app/classroom/new/hooks/use-create-classro
 import { act, renderHook } from "@testing-library/react";
 import { axios } from "@/utils"
 
-
 const classRoomId = "classroom12345"
 const pushMocked = jest.fn()
 
@@ -21,7 +20,7 @@ jest.mock("../../../../../src/utils", () => ({
 }))
 
 describe("useCreateClassroom hook tests", function () {
-    it("Should execute the push function with the corre-ct classroomId", async function () {
+    it("Should execute the push function with the correct classroomId", async function () {
         const classRoomName = "example"
         const { result } = renderHook(() => useCreateClassroom());
         const { createClassroom } = result.current;
@@ -42,8 +41,7 @@ describe("useCreateClassroom hook tests", function () {
     })
 
     it('should handle error state correctly', async () => {
-        // const mockedAxios = axios as jest.Mocked<typeof axios>;
-        const mockedAxios = axios as any;
+        const mockedAxios = axios as jest.MockedFunction<typeof axios>;
         mockedAxios.mockRejectedValue(new Error('An error occurred'));
 
         const { result } = renderHook(() => useCreateClassroom());

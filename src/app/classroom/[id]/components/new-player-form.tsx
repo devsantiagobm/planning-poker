@@ -16,7 +16,6 @@ interface Inputs {
 
 export function customValidate(value: string) {
     const isWrong = validateGenericInput(value)
-
     if (isWrong) return "Ingresa un texto de 5 a 20 caracteres, sin caracteres especiales y con máximo 3 números";
 }
 
@@ -27,11 +26,13 @@ export default function NewPlayerForm({ params }: Params) {
     const { watch, control, handleSubmit, formState: { errors } } = useForm<Inputs>()
 
 
-    const onSubmit: SubmitHandler<Inputs> = (data) => {
-        socket.emit("join-classroom", { ...data, roomID: params.id })
+    const onSubmit: SubmitHandler<Inputs> = ({ username, type }) => {
+        socket.emit("join-classroom", { username, type, roomID: params.id })
         setIsUserCreated(true)
-        setUsername(data.username)
-        setTypeOfPlayer(data.type)
+
+
+        setUsername(username)
+        setTypeOfPlayer(type)
     }
 
     return (
@@ -57,7 +58,6 @@ export default function NewPlayerForm({ params }: Params) {
                                 )}
 
                             />
-
 
                             <RadioGroupMolecule>
                                 {

@@ -93,9 +93,7 @@
             ". fourth-line .";
         column-gap: 72px;
         row-gap: 32px;
-
     }
-
 
     &__first-line {
         grid-area: first-line;
@@ -162,7 +160,7 @@
     &__letter-avatar,
     &__player-card {
         transition: transform .25s ease;
-        
+
         &--give-admin:hover {
             cursor: pointer;
             transform: translateY(-4px);
@@ -205,7 +203,7 @@
     }
 
 
-    &__username-text{
+    &__username-text {
         max-width: 12ch;
         overflow: hidden;
         white-space: nowrap;
@@ -447,13 +445,13 @@
     }
 
 
-    &__confirm-admin-message{
+    &__confirm-admin-message {
         text-align: center;
         margin: 0 0 12px;
         text-wrap: pretty;
     }
 
-    &__confirm-admin-button{
+    &__confirm-admin-button {
         margin: 0 auto;
     }
 }
@@ -532,6 +530,7 @@
                 "first-line first-line "
                 "second-line desk third-line"
                 "fourth-line fourth-line fourth-line";
+
             column-gap: 32px;
             row-gap: 16px;
         }
@@ -566,7 +565,7 @@
             max-width: 40px;
         }
 
-        &__card{
+        &__card {
             font-size: .85rem;
         }
 
@@ -650,7 +649,8 @@
             max-width: 16px;
         }
 
-        &__card, &__player-card {
+        &__card,
+        &__player-card {
             max-width: clamp(32px, 8vw, 40px);
             font-size: .7rem;
         }

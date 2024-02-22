@@ -11,6 +11,8 @@ describe("getFirstLetters tests", function () {
 
     it('Should return uppercase single letter for a one-letter name', () => {
         expect(getFirstLetters('A')).toBe('A');
+        expect(getFirstLetters('A')[0]).toBe('A');
+        expect(getFirstLetters('A')[1]).toBe(undefined);
     });
 
     it('Should return an empty string for a null name', () => {
@@ -20,5 +22,4 @@ describe("getFirstLetters tests", function () {
     it('Should return an empty string for an undefined name', () => {
         expect(getFirstLetters(undefined as any)).toBe('');
     });
-
 })
