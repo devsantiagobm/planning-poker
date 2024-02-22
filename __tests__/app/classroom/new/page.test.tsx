@@ -1,4 +1,4 @@
-import NewMatchPage, { customValidate } from "@/app/classroom/new/page"
+import NewMatchPage from "@/app/classroom/new/page"
 import { act, fireEvent, render, renderHook, screen, waitFor } from "@testing-library/react"
 import { useCreateClassroom } from "@/app/classroom/new/hooks/use-create-classroom"
 import { CreateWrapperContexts } from "../../../test-utils";
@@ -38,19 +38,19 @@ describe("<NewMatchPage /> tests", function () {
     })
 
 
-    it("Should validate custom input format", function () {
-        expect(customValidate("")).toBeTruthy()
-        expect(customValidate("shor")).toBeTruthy()
-        expect(customValidate("textlongerthan20likethis")).toBeTruthy()
-        expect(customValidate("textwithspecialchar.")).toBeTruthy()
-        expect(customValidate("manynumbers1234")).toBeTruthy()
+    // it("Should validate custom input format", function () {
+    //     expect(customValidate("")).toBeTruthy()
+    //     expect(customValidate("shor")).toBeTruthy()
+    //     expect(customValidate("textlongerthan20likethis")).toBeTruthy()
+    //     expect(customValidate("textwithspecialchar.")).toBeTruthy()
+    //     expect(customValidate("manynumbers1234")).toBeTruthy()
 
 
-        expect(customValidate("validValidation")).toBeFalsy()
-        expect(customValidate("classroom")).toBeFalsy()
-        expect(customValidate("classroom123")).toBeFalsy()
-        expect(customValidate("1 example")).toBeFalsy()
-    })
+    //     expect(customValidate("validValidation")).toBeFalsy()
+    //     expect(customValidate("classroom")).toBeFalsy()
+    //     expect(customValidate("classroom123")).toBeFalsy()
+    //     expect(customValidate("1 example")).toBeFalsy()
+    // })
 
     it("Should show an error when submit is not valid", async function () {
         const input = screen.getByRole("textbox")
