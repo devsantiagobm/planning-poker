@@ -1,7 +1,6 @@
 import { Children, ReactNode, cloneElement, ReactElement, ComponentProps } from "react";
 import { MotionProps, motion, HTMLMotionProps } from "framer-motion"
 
-
 interface Props extends ComponentProps<"div"> {
     contentClassname?: string
 }

@@ -2,7 +2,7 @@ import { Modal, ButtonAtom, InputRadioAtom, RadioGroupMolecule } from "@/system-
 import { useUserContext, useClassroomContext } from "../hooks"
 import { ModalTypes, TypeOfPlayers } from "../types"
 import { InputRadio } from "@/types"
-import { Dispatch, SetStateAction } from "react"
+import { Dispatch, SetStateAction, useState } from "react"
 import { useForm, Controller, SubmitHandler } from "react-hook-form"
 
 interface Inputs {
@@ -12,8 +12,7 @@ interface Inputs {
 export default function UpdateUserModal({ setModal }: { setModal: Dispatch<SetStateAction<ModalTypes>> }) {
     const { typeOfPlayer, setTypeOfPlayer } = useUserContext()
     const { socket } = useClassroomContext()
-    const { watch, control, handleSubmit } = useForm<Inputs>()
-
+    const { control, handleSubmit } = useForm<Inputs>()
 
     const onSubmit: SubmitHandler<Inputs> = ({ type }) => {
         socket.emit("update-player", { type })
@@ -27,14 +26,13 @@ export default function UpdateUserModal({ setModal }: { setModal: Dispatch<SetSt
 
             <Modal.Header>
                 <span>Cambiar modo de visualización</span>
-                <button className="classroom__close-icon" onClick={() => setModal(null)}>
+                <button className="classroom__close-icon" onClick={() => setModal(null)} aria-label="button-close">
                     <img src="/images/close.png" alt="Close icon" />
                 </button>
             </Modal.Header>
 
             <Modal.Body className="classroom__change-score-body">
-                <form onSubmit={handleSubmit(onSubmit)} className="classroom__update-user-form">
-
+                <form onSubmit={handleSubmit(onSubmit)} className="classroom__update-user-form" role="form">
 
                     <RadioGroupMolecule>
                         {

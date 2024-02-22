@@ -28,7 +28,6 @@ export default function UserCard({ username, socketID, type, vote }: FullPlayer)
         setConfirmationModal(false)
     }
 
-
     const getCardClasses = () => {
         const base = "classroom__player-card";
         const giveAdmin = isOwner && !currentUserIsOwner ? " classroom__player-card--give-admin" : "";
