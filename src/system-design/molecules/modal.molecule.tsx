@@ -45,9 +45,7 @@ function Header({ children, ...props }: Props & ComponentProps<"div">) {
 function Body({ children, className, ...props }: Props & ComponentProps<"div">) {
     return (
         <div className={`modal__body ${className}`} {...props}>
-            {
-                children
-            }
+            {children}
         </div>
     )
 }

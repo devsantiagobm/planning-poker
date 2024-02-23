@@ -1,11 +1,9 @@
+// WITHOUT THIS LINE, THE TESTS ARE SHOWING AN ERROR 
+window.setImmediate = window.setTimeout as any
+
 import NewMatchPage from "@/app/classroom/new/page"
 import { act, fireEvent, render, renderHook, screen, waitFor } from "@testing-library/react"
 import { useCreateClassroom } from "@/app/classroom/new/hooks/use-create-classroom"
-import { CreateWrapperContexts } from "../../../test-utils";
-import { ClassroomProvider, url } from "@/app/classroom/[id]/context/classroom.context";
-
-// WITHOUT THIS LINE, THE TESTS ARE SHOWING AN ERROR 
-window.setImmediate = window.setTimeout as any
 
 const createClassroomMock = jest.fn()
 

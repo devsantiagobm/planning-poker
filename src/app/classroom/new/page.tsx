@@ -19,13 +19,13 @@ export default function NewMatch() {
     const { createClassroom, loading, error } = useCreateClassroom()
 
 
-    const onSubmit: SubmitHandler<Inputs> = ({name}) => {
+    const onSubmit: SubmitHandler<Inputs> = ({ name }) => {
         createClassroom(name)
     };
 
     function customValidate(value: string) {
         const isWrong = validateGenericInput(value)
-    
+
         if (isWrong) {
             return "Ingresa un texto de 5 a 20 caracteres, sin caracteres especiales y con máximo 3 números";
         }
