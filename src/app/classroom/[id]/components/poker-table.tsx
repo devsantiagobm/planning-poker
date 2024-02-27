@@ -7,9 +7,7 @@ import { UserCard } from "."
 export default function PokerTable() {
     const { firstHalfOfUsers, firstUser, secondHalfOfUsers, secondUser } = useSplitPlayers()
     const { socket, arePlayersReady, averageVotes, isOwner } = useClassroomContext()
-
-
-
+    
     function handleRevealCards() {
         socket.emit("reveal-cards")
     }
