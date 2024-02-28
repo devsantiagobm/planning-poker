@@ -1,0 +1,179 @@
+@use "../variables/" as *;
+
+:root {
+    --amplify-components-tabs-item-hover-color: #{$light-main} !important;
+    --amplify-components-tabs-item-active-color: #{$light-main} !important;
+    --amplify-components-tabs-item-active-border-color: #{$light-main} !important;
+    --amplify-components-tabs-item-color: #{$ultra-dark-color} !important;
+    --amplify-components-tabs-item-border-color: #{$ultra-dark-color} !important;
+    --amplify-components-field-label-color: #{$color} !important;
+    --amplify-components-fieldcontrol-border-radius: 100px !important;
+    --amplify-components-fieldcontrol-color: #{$color} !important;
+    --amplify-components-button-hover-background-color: transparent !important;
+    --amplify-components-button-hover-border-color: #{ $light-main} !important;
+    --amplify-components-heading-color: #{$color} !important;
+    --amplify-components-text-color: #{$color}!important;
+    --amplify-components-button-color: #{$color}!important;
+}
+
+
+[data-amplify-authenticator] {
+    min-height: 100dvh;
+}
+
+[data-amplify-authenticator] [data-amplify-router] {
+    background-color: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+}
+
+[data-amplify-authenticator] {
+    [data-amplify-form] {
+        padding-block: 16px!important;
+    }
+
+    [data-amplify-authenticator-forgotpassword]{
+        padding-block: 0!important;
+    }
+}
+
+.amplify {
+
+    &-input,
+    &-button,
+    &-label,
+    &-tabs__list {
+        animation: initial-animation .5s ease !important;
+    }
+
+    &-input {
+        font-weight: $font-light;
+        border: solid 1px $light-main !important;
+        padding: 8px 16px;
+
+        &:focus {
+            border-color: $light-main !important;
+            box-shadow: none !important;
+        }
+
+        &::placeholder {
+            color: transparent !important;
+        }
+    }
+
+    &-label{
+        font-weight: $font-semi-bold!important;
+    }
+
+    &-field__show-password svg path {
+        fill: $light-main !important;
+    }
+
+    &-button {
+        &:focus {
+            --amplify-internal-button-background-color: transparent !important;
+            --amplify-internal-button-border-color: #{$light-main} !important;
+            --amplify-internal-button-color: transparent !important;
+            box-shadow: none !important;
+            border-left-color: transparent !important;
+        }
+    }
+
+    &-button--primary {
+        --amplify-components-button-primary-background-color: #{$medium-light-main} !important;
+        --amplify-components-button-primary-color: #{$color} !important;
+        --amplify-components-button-primary-hover-background-color: #{$medium-light-main} !important;
+
+        &:focus {
+            --amplify-internal-button-background-color: #{$medium-light-main} !important;
+            --amplify-internal-button-border-color: transparent !important;
+            --amplify-internal-button-color: #{$color} !important;
+        }
+
+        &:hover {
+
+            filter: brightness(90%);
+        }
+    }
+
+    &-heading {
+        display: none !important;
+    }
+
+    &-button--link {
+        --amplify-components-button-link-color: #{$color} !important;
+    }
+
+    &-alert__icon {
+        display: none !important;
+    }
+
+    &-alert__dismiss {
+        display: none!important;
+    }
+
+    &-alert__body {
+        font-size: .9rem !important;
+        font-weight: $font-semi-bold!important;
+        text-align: center!important;
+    }
+
+    &-alert--error{
+        background-color: $color!important;
+        align-items: center!important;
+        border-radius: 8px!important;
+        --amplify-components-alert-error-color: #{$error};
+    }
+
+    &-custom-header{
+        display: grid!important;
+        place-items: center!important;
+        margin: 0 0 16px!important;
+    
+        &-title{
+            font-size: 1.5rem!important;
+            font-weight: $font-medium!important;
+        }
+    }
+
+    &-button--small{
+        background-color: transparent!important;
+        min-width: 100%;
+        color: $color!important;
+        border: none!important;
+
+        &:hover{
+            text-decoration: underline;
+        }
+    }
+
+    &-field-group__control{
+        // --amplify-field-group__control: 
+        --amplify-components-button-border-color: #{$color}!important;
+        font-weight: $font-medium!important;
+        &:hover{
+            --amplify-components-button-hover-background-color: #{$color}!important;
+            --amplify-components-button-hover-color: #{$main}!important;
+        }
+        
+        &:focus{
+            --amplify-internal-button-background-color: #{$color}!important;
+            --amplify-internal-button-border-color: #{$color}!important;
+            --amplify-internal-button-color: #{$main}!important;
+        }
+    }
+}
+
+
+
+@keyframes initial-animation {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}

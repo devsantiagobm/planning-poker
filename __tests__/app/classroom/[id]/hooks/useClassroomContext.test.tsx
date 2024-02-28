@@ -7,7 +7,6 @@ import { renderHook } from "@testing-library/react";
 
 describe("useClassroomContext tests", function () {
     it("Should execute the hook without errors with provider", function () {
-
         renderHook(() => useClassroomContext(),
             {
                 wrapper: ({ children }) => (<ClassroomProvider>{children}</ClassroomProvider>)
