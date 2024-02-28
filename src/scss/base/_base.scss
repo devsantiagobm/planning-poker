@@ -4,15 +4,11 @@ body {
     background-image: radial-gradient(circle, $dark-main 0%, $soft-main 50%, $ultra-soft-main 90%);
     min-height: 100vh;
     color: $color;
-    font-weight: $suc;
+    font-weight: $font-regular;
 }
 
 
 ::selection {
     background-color: $light-main;
     color: $color;
-}
-
-.auth-layout{
-    min-height: 100dvh;
 }
