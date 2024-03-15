@@ -4,7 +4,6 @@ import { ReactNode } from "react";
 import { Authenticator, Image } from "@aws-amplify/ui-react";
 import { Amplify } from 'aws-amplify'
 import awsExports from "src/aws-exports";
-import { DefaultComponents } from "node_modules/@aws-amplify/ui-react/dist/types/components/Authenticator/hooks/useCustomComponents/defaultComponents";
 import { I18n } from 'aws-amplify/utils';
 import { translations } from '@aws-amplify/ui-react';
 
@@ -20,7 +19,7 @@ export default function Layout({ children }: { children: ReactNode }) {
     )
 }
 
-const components: DefaultComponents = {
+const components = {
     Header() {
         return (
             <div className="amplify-custom-header">
